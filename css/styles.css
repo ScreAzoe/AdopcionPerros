@@ -1,9 +1,9 @@
 .logo{
-    width: 50px;
+    width: 10vw;
 }
 .imagen{
     width: 100%;
-    max-height:585px;
+    max-height:485px;
 }
 
 .icono{
@@ -12,7 +12,8 @@
 }
 
 .ico{
-    width: 30px;
+    padding-right: 5%;
+    width: 5vw;
 
 }
 
@@ -32,9 +33,10 @@
 
 
 .marco{
+    width: 95%;
     border: solid #046CDB; 
     border-radius: 15px; 
-    padding:50px;
+    text-align-last: center;
 }
 
 
@@ -65,9 +67,40 @@
     .tarjeta-imagen{
         display: none;
     }
+
+    .grid-producto{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-row-gap: 20px;
+        text-align: center;
+    }
+
+    .producto{
+        padding-top: 25px;
+        max-width: 350px;
+        max-height: 250px;
+    }
+
+
+
 }
    
 @media screen and (min-width: 701px){
+    .grid-producto{
+        display: grid;
+        grid-template-columns: 33.333% 33.333% 33.333%;
+        column-gap: 10px ;
+        row-gap: 20px;
+    }
+    .grid-producto > div{
+        padding-top: 50px;
+    }
+
+
+    .producto{
+        width: 80%;
+        height: 60%;
+    }
 
     .renglon-encabezado{
         font-size:2.9vw;
@@ -98,6 +131,8 @@
 
         grid-column: auto / span 3;
     }
+
+
 }
 
 .fondo {
@@ -109,12 +144,14 @@
 
 .grid-container{
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 33.333% 33.333% 33.333%;
+    align-self: center;
+
 }
 
 .grid-container > div{
-    padding: 10%;
-    padding-bottom: 0%;
+
+    padding: 5%;
 
 }
 
@@ -170,6 +207,22 @@
     color: white;
     font-size: 2vw;
   }
+
   li{
       padding: 1%;
+  }
+
+
+  .form-grupo{
+      padding-top: 20px;
+  }
+  .form-entrada{
+      background-color: #F1F1F1;
+      padding: 10px;
+      width: 80%;
+      border: none;
+  }
+
+  form{
+      padding: 6%;
   }
