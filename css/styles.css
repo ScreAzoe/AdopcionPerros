@@ -223,6 +223,10 @@ body{
         text-align: right;
       }
 
+      .formulario{
+        padding: 6%;
+    }
+
 
 }
 
@@ -314,9 +318,7 @@ body{
       border: none;
   }
 
-.formulario{
-      padding: 6%;
-  }
+
 
 
 
