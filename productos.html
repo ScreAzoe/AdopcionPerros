@@ -26,28 +26,33 @@
         </div>
         
         <div class="grid-producto ">
-            <div class="item1 marco">
-                <img class="producto" src="img/productos/dona.png">
+            <div class="item1 marco" id="juguete1">
+                <img class="producto " src="img/productos/dona.png">
+                <img onclick="actualizarCarrito('juguete1')" class="carrito-img" src="img/productos/carrito.png" title="Agregar al carrito">
                 <div class="renglon-cuerpo">
-                    <p >Juguete 1</p>
-                    <p>Precio: <strong>$500.00 MXN</strong> </p>
+                    <p name="nombre">Juguete 1</p>
+                    <p>Precio: $<strong name="precio">100.00</strong> MXN</p>
                 </div>
             </div>
-            <div class="item2 marco">
+
+
+            <div class="item2 marco" id="juguete2">
                 <img class="producto" src="img/productos/trapo.png">
+                <img onclick="actualizarCarrito('juguete2')" class="carrito-img" src="img/productos/carrito.png" title="Agregar al carrito">
+
                 <div class="renglon-cuerpo">
-                    <p >Juguete 1</p>
-                    <p>Precio: <strong>$500.00 MXN</strong> </p>
+                    <p name="nombre">Juguete 2</p>
+                    <p >Precio: $<strong name="precio">200.00</strong> MXN</p>
                 </div>
+ 
 
-
-              
             </div>
-            <div class="item3 marco">
+            <div class="item3 marco" id="juguete3">
                 <img class="producto" src="img/productos/pelota.jpeg">
+                <img onclick="actualizarCarrito('juguete3')" class="carrito-img" src="img/productos/carrito.png" title="Agregar al carrito">
                 <div class="renglon-cuerpo">
-                    <p >Juguete 1</p>
-                    <p>Precio: <strong>$500.00 MXN</strong> </p>
+                    <p name="nombre" >Juguete 3</p>
+                    <p>Precio: $<strong name="precio">300.00</strong> MXN </p>
                 </div>
             </div>
         </div>
@@ -65,63 +70,69 @@
         
         <div class="grid-producto ">
             <div class="item1 marco" id="art1">
-                <img onclick="actualizarCarrito('art1')" class="producto" src="img/productos/art1.png">
+                <img class="producto" src="img/productos/art1.png">
+                <img onclick="actualizarCarrito('art1')" class="carrito-img" src="img/productos/carrito.png" title=Agregar al carrito">
+
                 <div class="renglon-cuerpo">
-                    <p name="nombre" >Juguete 1</p>
+                    <p name="nombre" >Producto 1</p>
                     <p>Precio: $ <strong name="precio">500.00</strong> MXN </p>
                 </div>
             </div>
 
             <div class="item2 marco" id="art2">
-                <img  onclick="actualizarCarrito('art2')" class="producto"  src="img/productos/art2.png">
+                <img   class="producto"  src="img/productos/art2.png">
+                <img onclick="actualizarCarrito('art2')" class="carrito-img" src="img/productos/carrito.png" title="Agregar al carrito">
+
                 <div class="renglon-cuerpo">
-                    <p name="nombre" >Juguete 2</p>
+                    <p name="nombre" >Producto 2</p>
                     <p> Precio: $<strong name="precio">600.00</strong> MXN </p>
                 </div>
             </div>
 
             <div class="item3 marco" id="art3">
-                <img onclick="actualizarCarrito('art3')"  class="producto" src="img/productos/art3.png">
+                <img  class="producto" src="img/productos/art3.png">
+                <img onclick="actualizarCarrito('art3')" class="carrito-img" src="img/productos/carrito.png" title="Agregar al carrito">
+
                 <div class="renglon-cuerpo">
-                    <p name="nombre" >Juguete 3</p>
+                    <p name="nombre" >Producto 3</p>
                     <p>Precio:$ <strong name="precio">700.00</strong> MXN </p>
                 </div>
             </div>
         </div>
         <br><br>
-        <form name= "carrito" id="carritoCompras" class=container>
-            <table style="border: #046CDB solid; width: 100%; border-radius: 20px;">
-                <thead>
-                    <tr>
-                        <th> </th>
-                        <th> Producto</th>
-                        <th> Precio </th>
-                        <th> Cantidad</th>
-                        <th> Subtotal</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>TOTAL</td>
-                    <td>                    
-                        $<input type="number" name="totalGlobal" id="totalGlobal" readonly > MXN
-                    </td>
-                    <td><button id="botonPagar" type="submit" for="carrito" disabled> Pagar</button></td>
-                </tr>
 
-
-            </table>
-        </form> 
     
     </div>
 
+    <form name= "carrito" id="carritoCompras" class=container>
+        <table style="border: #046CDB solid; width: 100%; border-radius: 20px; ">
+            <thead>
+                <tr style="font-size: 2.5vw;">
+                    <th> </th>
+                    <th> Producto</th>
+                    <th style="width: 18%;"> Precio </th>
+                    <th style="width:10%"> Cant.</th>
+                    <th style="width: 25%;"> Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
 
+            <tr style="padding-top: 30%;font-size: 2.5vw;">
+                <td></td>
+                <td><strong>TOTAL </strong></td>
+                <td colspan="2">                    
+                    $<input style="width: 60%;" class="carr-campo " type="number" name="totalGlobal" id="totalGlobal" readonly > MXN
+                </td>
+
+                <td><button id="botonPagar" type="submit" for="carrito" disabled style="font-size: 2.5vw;"> Pagar</button></td>
+            </tr>
+
+
+        </table>
+    </form> 
 
     <br>
     <br>
@@ -155,4 +166,5 @@
         </div>
     </footer>
     <script src="productos.js"></script>
+
 </body>

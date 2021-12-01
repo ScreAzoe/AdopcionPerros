@@ -33,6 +33,7 @@
 
 
 .marco{
+    position: relative;
     width: 95%;
     border: solid #046CDB; 
     border-radius: 15px; 
@@ -81,6 +82,24 @@
         max-height: 250px;
     }
 
+    .producto-carr{
+        width: 70px; 
+        height: 50px;
+    }
+    
+    .carr-campo{
+        font-size: 2.5vw;
+        width: 90%;
+        text-align: right;
+      }
+    
+    .xs{
+            font-size: 2.5vw;
+        max-width: 45%;
+        text-align: right;
+      }
+
+
 
 
 }
@@ -100,6 +119,11 @@
     .producto{
         width: 80%;
         height: 60%;
+    }
+
+    .producto-carr{
+        width: 100%; 
+        height: 100px;
     }
 
     .renglon-encabezado{
@@ -131,6 +155,18 @@
 
         grid-column: auto / span 3;
     }
+
+    .carr-campo{
+        font-size: 2vw;
+        width: 90%;
+        text-align: right;
+      }
+    
+    .xs{
+        font-size: 2vw;
+        max-width: 45%;
+        text-align: right;
+      }
 
 
 }
@@ -223,6 +259,22 @@
       border: none;
   }
 
-  form{
+.formulario{
       padding: 6%;
   }
+
+
+
+
+.carrito-img{
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      bottom:12vw;
+      right: 1vw;
+  }
+
+  .carrito-img:hover{
+      cursor: pointer;
+  }
+

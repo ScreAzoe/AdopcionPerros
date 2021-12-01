@@ -2,6 +2,7 @@
 
 function actualizarCarrito(idProducto){
     if(estaEnCarrito(idProducto)){
+        alert("¡Agregado al carrito!\n\n Puedes ver tu carrito final de la página");
         return;
     }
     let productoDOM= document.querySelector('#'+idProducto);
@@ -15,11 +16,22 @@ function actualizarCarrito(idProducto){
     let carrito= document.querySelector("#carritoCompras table tbody");
     carrito.appendChild(elemento);
     calcularTotal();
+    alert("¡Agregado al carrito!\n\n Puedes ver tu carrito final de la página");
 }
 
 function estaEnCarrito(idProducto){
     let elemento=document.querySelector("#carritoCompras #"+idProducto);
-    return elemento!=null;
+    if(elemento!=null){
+        elemento.querySelector("td input[name='cantidad']").value++;
+        let cantidad= elemento.querySelector("td input[name='cantidad']").value;
+        let precio= elemento.querySelector("td input[name='precio']").value;
+        elemento.querySelector("td input[name='total']").value=  cantidad*precio;
+        calcularTotal();
+        return true;
+    }
+    return false;
+
+    
 
 }
 
@@ -34,29 +46,29 @@ function quitarElementoCarrito(idProducto){
 function agregarElementoCarrito(idProducto, imagen, nombre, precio){
     return ` 
                 <td align="center">
-                    <img src="`+imagen+`" style="width: 70px; height: 50px">
+                    <img class="producto-carr" src="`+imagen+`" >
                 </td>
                 <td align="center">
-                    <input type="text" name="producto" id="name_id" value="`+nombre+`" readonly >
+                    <input class="carr-campo" type="text" name="producto" id="name_id" value="`+nombre+`" readonly >
+                </td>
+                <td align="center" style="font-size: 2.0vw;">
+                    $<input class="carr-campo xs" type="number" name="precio" id="precio_id" value=`+precio+`  readonly> MXN
+                </td>
+                <td align="center" style="max-width:20px">
+                    <input style="max-width:100%" class="carr-campo xs" pattern="^[0-9]+" oninput="calcularSubtotal('`+idProducto+`',`+precio+`)" type="number" name="cantidad" id="cantidad_id" min="1" max="100" step="1" value=`+1+` title="Debe de pedir al menos un pieza"> 
+                </td>
+                <td align="center" style="font-size: 2.0vw;">
+                    $<input class="carr-campo xs" type="number" name="total" id="total_id" value=`+precio+` readonly > MXN
                 </td>
                 <td align="center">
-                    $<input type="number" name="precio" id="precio_id" value=`+precio+`  readonly> MXN
-                </td>
-                <td align="center">
-                    <input pattern="^[0-9]+" oninput="calcularSubtotal('`+idProducto+`',`+precio+`)" type="number" name="cantidad" id="cantidad_id" min="1" max="100" step="1" value=`+1+` title="Debe de pedir al menos un pieza"> 
-                </td>
-                <td align="center">
-                    <input type="number" name="total" id="total_id" value=`+precio+` readonly > MXN
-                </td>
-                <td align="center">
-                    <button onclick="quitarElementoCarrito('`+idProducto+`')"> x </button>
+                    <button class="carr-campo" onclick="quitarElementoCarrito('`+idProducto+`')"> x </button>
                 </td>
                 `;
 }
 
 function calcularSubtotal(idProducto, precio){
     let elemento=document.querySelector("#carritoCompras #"+idProducto);
-    let cantidad= elemento.querySelector("td input[name='cantidad']").value
+    let cantidad= elemento.querySelector("td input[name='cantidad']").value;
     elemento.querySelector("td input[name='total']").value=  cantidad*precio;
     calcularTotal();
 }
@@ -64,8 +76,7 @@ function calcularSubtotal(idProducto, precio){
 function calcularTotal(){
     let carrito= document.querySelectorAll("#carritoCompras td input[name='total']");
     var suma=0;
-    var i;
-    for(i=0; i<carrito.length; i++){
+    for(let i=0; i<carrito.length; i++){
         suma+=parseFloat(carrito[i].value);
         console.log(suma)
     }
