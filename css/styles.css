@@ -51,8 +51,7 @@
 }
 
 .contenedor {
-    padding: 3%;
-    padding-top: 0%;
+    padding: 0% 3%;
 }
 
 .renglon{
@@ -77,7 +76,8 @@
 @media screen and (max-width: 700px){
 
     header{
-        padding-top: 9vw;
+        padding-top: 8.7vw;
+        padding-bottom: 0%;
     }
     .navbar-letra{
         font-size: 3vw;
@@ -149,12 +149,15 @@
 @media screen and (min-width: 701px){
 
     header{
-        padding-top: 4vw;
+        padding-top: 3.9vw;
+        padding-bottom: 0;
+
     }
     .navbar-letra{
         font-size: 2vw;
 
-    };
+    }
+    
     .grid-producto{
         display: grid;
         grid-template-columns: 33.333% 33.333% 33.333%;
