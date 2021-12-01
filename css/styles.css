@@ -1,3 +1,36 @@
+
+
+.navbar{
+    position: fixed;
+    top:0;
+    width: 100%;
+    margin:0;
+    background-color:rgba(4, 108, 219, 0.96);
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0;
+
+}
+
+.navbar li{
+    padding: 15px 0px;
+    display: block;
+    float:left;
+    color: white;
+    width: 16%;
+    text-align: center;
+
+}
+
+.navbar li:hover:not(.active){
+    background-color: turquoise;
+}
+
+.active{
+    background-color: #111;
+}
+
+
 .logo{
     width: 10vw;
 }
@@ -42,6 +75,15 @@
 
 
 @media screen and (max-width: 700px){
+
+    header{
+        padding-top: 9vw;
+    }
+    .navbar-letra{
+        font-size: 3vw;
+
+    };
+
     .renglon-encabezado{
         font-size:5vw;
        
@@ -105,6 +147,14 @@
 }
    
 @media screen and (min-width: 701px){
+
+    header{
+        padding-top: 4vw;
+    }
+    .navbar-letra{
+        font-size: 2vw;
+
+    };
     .grid-producto{
         display: grid;
         grid-template-columns: 33.333% 33.333% 33.333%;
