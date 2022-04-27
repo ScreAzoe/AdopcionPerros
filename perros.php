@@ -7,15 +7,14 @@
     <link href='https://fonts.googleapis.com/css?family=Dawning of a New Day' rel='stylesheet'>
     
 </head>
-
 <body>
 
     <ul class="navbar" >
         <a  href="./index.html"><li class="navbar-letra"> Inicio </li></a> 
         <a href="./sobre_nosotros.html"><li class="navbar-letra"> Nosotros </li></a>
-        <a href="./perros.php"><li class="navbar-letra"> Adoptar </li></a>
-        <a href="./productos.php"><li class="navbar-letra"> Productos </li></a> 
-        <a href="./servicios.html"><li class="navbar-letra active"> Servicios </li> </a>
+        <a href="./perros.php"><li class="navbar-letra active"> Adoptar </li></a> 
+        <a href="./productos.php"><li class="navbar-letra "> Productos </li></a> 
+        <a href="./servicios.html"><li class="navbar-letra"> Servicios </li> </a>
         <a href="./contacto.php"><li class="navbar-letra">  Contacto </li> </a>
      </ul>
     <br><br><br><br>
@@ -23,39 +22,53 @@
         <div class="renglon">
             <div class="renglon-encabezado" align="center">
                 <strong>
-                    ¡Conoce nuestros servicios!
+                    Ayúdanos a seguir ayudando
                 </strong>
             </div>
         </div>
 
         <div class="renglon">
-            <div class="tarjeta">
-                <div class="tarjeta-info" style="padding:5%">
-                    <iframe width="100%" height="350px"src="https://www.youtube-nocookie.com/embed/Cn-3VWzv9GU?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="tarjeta-info" style="font-size:xx-large;">
-                    <br><br><br>
-                    <br><br><br>
-                    Te echamos una mano adiestrando esas patas!
-                </div>
+            <div class="renglon-cuerpo">
+                <strong>
+                    Jueguetes para el travieso de la casa
+                </strong>
             </div>
         </div>
+        
+        <?php
+            $cont= 0;
+            $pdo= new PDO('mysql:host=localhost; port=3306; dbname=refugio', 'ref','123');
+            $perros= $pdo->query("SELECT * FROM perros");
+            while($row = $perros-> fetch(PDO::FETCH_ASSOC)){
+                if($cont==0){
+                    echo  "<div class='grid-producto'>";
 
-        <div class="renglon">
-            <div class="tarjeta azul">
-                <div class="tarjeta-info" style="font-size:xx-large;">
-                    <br><br><br>
-                    <br><br><br>
-                    Deja a tu amigo refleje su personalidad con su look!
-                </div>
-                <div class="tarjeta-info" style="padding:5%;">
-                    <iframe width="100%" height="350px"src="https://www.youtube-nocookie.com/embed/Dmcaq3HiAF4?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
+                }
+                echo"<div class='item".$row['id']." marco' id='".$row['id']."'>
+                    <img  style='border-radius:50%;' class='producto' src='".$row['imagen']."'>
+                    <div class='renglon-cuerpo'>
+                        <p name='nombre'>".$row['nombre']."</p>
+                        <p>".$row["descripcion"]."</p>
+                        <a href='contacto.html'><button class='button'>Adoptar</button></a>
+                    </div>
+                    
+                </div>";
+                $cont++;
+                if($cont==3){
+                    $cont=0;
+                    echo "</div>";
+                    echo "<br><br><br>";
+                }
+            }
+            if($cont<3){
+
+                echo "</div>";
+            }       
+        ?>
+        <br><br>
 
     
+    </div>
 
     <br>
     <br>
@@ -87,5 +100,7 @@
                  <img class="logo" src="img/logo.png">
              </div>
         </div>
-       </footer>
+    </footer>
+    <script src="productos.js"></script>
+
 </body>

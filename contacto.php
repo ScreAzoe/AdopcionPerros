@@ -1,3 +1,23 @@
+<?php
+            $pdo= new PDO('mysql:host=localhost; port=3306; dbname=refugio', 'ref','123');
+
+            if(isset($_POST['nombre'])){
+                $sql = "INSERT INTO citas (nombre, apellido, correo, telefono,cita, info, asunto) VALUES( :nombre,:apellido, :correo, :telefono, :cita, :info, :asunto)";
+
+                $cita= $pdo->prepare($sql);
+
+                $cita->execute(array(
+ 
+                    ':nombre'=> $_POST['nombre'],
+                    ':apellido'=> $_POST['apellido'],
+                    ':correo' => $_POST['correo'],
+                    ':telefono'=> $_POST['tel'],
+                    ':cita'=> $_POST['date'],
+                    ':info'=> $_POST['mas-info'],
+                    ':asunto'=> $_POST['asunto']
+                ));
+            }
+?>    
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -8,14 +28,17 @@
     
 </head>
 
+
+
 <body>
-    <ul class="navbar" >
+
+        <ul class="navbar" >
         <a  href="./index.html"><li class="navbar-letra "> Inicio </li></a> 
         <a href="./sobre_nosotros.html"><li class="navbar-letra"> Nosotros </li></a>
-        <a href="#"></a><li class="navbar-letra"> Adoptar </li> 
-        <a href="./productos.html"><li class="navbar-letra"> Productos </li></a> 
+        <a href="./perros.php"><li class="navbar-letra"> Adoptar </li></a> 
+        <a href="./productos.php"><li class="navbar-letra"> Productos </li></a> 
         <a href="./servicios.html"><li class="navbar-letra"> Servicios </li> </a>
-        <a href="./contacto.html"><li class="navbar-letra active">  Contacto </li> </a>
+        <a href="./contacto.php"><li class="navbar-letra active">  Contacto </li> </a>
      </ul>
      <br><br><br>
 
@@ -51,7 +74,7 @@
                     <div style="padding-left: 15px;">
                         Escríbenos
                     </div>
-                    <form class="formulario">
+                    <form class="formulario" method="post">
                         <div class="form-grupo" style="display:grid; grid-template-columns: 50% 50%; column-gap: 10%;">
                             <div class="item1">
                                 <label for="nombre">Nombre</label>
@@ -80,11 +103,11 @@
                             <div class="item2">
                                 <label for="asunto">Asunto</label>
                                 <br>
-                                <select class="form-entrada">
-                                    <option name="asunto" value="0">Adiestramento</option>
-                                    <option name="asunto" value="0">Estética</option>
-                                    <option name="asunto" value="1">Adpotar</option>
-                                    <option name="asunto" value="2">Dar en adopción</option>
+                                <select name="asunto" class="form-entrada">
+                                    <option value="0">Adiestramento</option>
+                                    <option  value="0">Estética</option>
+                                    <option value="1">Adpotar</option>
+                                    <option value="2">Dar en adopción</option>
                                 </select>
                             </div>
                         </div>
@@ -98,6 +121,7 @@
                             <br>
                             <textarea  class="form-entrada" name="mas-info" >¡Detállanos tu necesidad!</textarea>
                         </div>
+                        <button type="submmit" class="button">Enviar</button>
                     </form>
                 </div>
             </div>
